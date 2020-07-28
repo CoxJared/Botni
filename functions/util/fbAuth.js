@@ -5,7 +5,10 @@ const {
 
 module.exports = (request, response, next) => {
   let idToken;
-  if (request.headers.authorization && request.headers.authorization.startsWith('Bearer ')) {
+  if (
+    request.headers.authorization &&
+    request.headers.authorization.startsWith('Bearer ')
+  ) {
     idToken = request.headers.authorization.split('Bearer ')[1];
   } else {
     console.error('No Token Found');
@@ -14,11 +17,13 @@ module.exports = (request, response, next) => {
     })
   }
 
-  admin.auth().verifyIdToken(idToken)
+  admin
+    .auth()
+    .verifyIdToken(idToken)
     .then((decodedToken) => {
       request.user = decodedToken;
-      console.log(decodedToken);
-      return db.collection('users')
+      return db
+        .collection('users')
         .where('userId', '==', request.user.uid)
         .limit(1)
         .get();
@@ -30,6 +35,5 @@ module.exports = (request, response, next) => {
     .catch((err) => {
       console.error('Error while verifying token ', err);
       return response.status(403).json(err);
-
     })
 }

@@ -25,11 +25,13 @@ exports.getAllScreams = (request, response) => {
 }
 
 exports.postOneScream = (request, response) => {
-  if (request.body.trim() === '') {
-    return request.status(400).json({
+  if (request.body.body.trim() === '') {
+    return response.status(400).json({
       body: 'Body must not be empty'
     });
   }
+
+  console.log(request);
 
   const newScream = {
     body: request.body.body,

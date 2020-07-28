@@ -1,11 +1,12 @@
 const {
+  admin,
   db
 } = require('../util/admin');
 
 const config = require('../util/config');
 
 const firebase = require('firebase');
-firebase.initializeApp(config)
+firebase.initializeApp(config);
 
 const {
   validateSignupData,
@@ -28,6 +29,8 @@ exports.signup = (request, response) => {
   if (!valid) {
     return response.status(400).json(errors);
   }
+
+  const noImg = 'no-image.png';
 
   let token, userId;
   db.doc(`/users/${newUser.handle}`)
@@ -53,6 +56,7 @@ exports.signup = (request, response) => {
         handle: newUser.handle,
         email: newUser.email,
         createdAt: new Date().toISOString(),
+        imageUrl: `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${noImg}?alt=media`,
         userId
       };
       return db.doc(`/users/${newUser.handle}`).set(userCredentials);
@@ -62,7 +66,7 @@ exports.signup = (request, response) => {
         token
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.error(err);
       if (err.code === 'auth/email-already-in-use') {
         return response.status(400).json({
@@ -73,8 +77,8 @@ exports.signup = (request, response) => {
           error: err.code
         });
       }
-    })
-}
+    });
+};
 
 exports.login = (request, response) => {
   const user = {
@@ -104,7 +108,7 @@ exports.login = (request, response) => {
     })
     .catch((err) => {
       console.err(err);
-      if (err.code === "auth/wrong-password") {
+      if (err.code === 'auth/wrong-password') {
         return response.status(403).json({
           general: 'wrong credentails, please try again'
         });
@@ -112,5 +116,72 @@ exports.login = (request, response) => {
       return response.status(500).json({
         error: error.code
       });
-    })
+    });
+};
+
+exports.uploadImage = (request, response) => {
+  console.log('start');
+  const BusBoy = require('busboy');
+  const path = require('path');
+  const os = require('os');
+  const fs = require('fs');
+
+  const busboy = new BusBoy({
+    headers: request.headers
+  });
+
+  let imageFileName;
+  let imageToBeUploaded = {};
+
+  busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
+    // if (mimetype !== 'image/jpeg' && mimetype !== 'image/png') {
+    //   return response.status(400).json({
+    //     error: 'Wrong filetype submitted'
+    //   });
+    // }
+    // image.png
+    const imageExtension = filename.split('.')[
+      filename.split('.').length - 1
+    ];
+    imageFileName = `${Math.round(
+      Math.random() * 10000000000
+    )}.${imageExtension}`;
+    const filepath = path.join(os.tmpdir(), imageFileName);
+    imageToBeUploaded = {
+      filepath,
+      mimetype
+    };
+    file.pipe(fs.createWriteStream(filepath));
+  });
+  busboy.on('finish', () => {
+    admin
+      .storage()
+      .bucket()
+      .upload(imageToBeUploaded.filepath, {
+        resumable: false,
+        metadata: {
+          metadata: {
+            contentType: imageToBeUploaded.mimetype
+          }
+        }
+      })
+      .then(() => {
+        const imageUrl = `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${imageFileName}?alt=media`;
+        return db.doc(`/users/${request.user.handle}`).update({
+          imageUrl
+        });
+      })
+      .then(() => {
+        return response.json({
+          message: 'Image uploaded successfully'
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+        return response.status(500).json({
+          error: err.code
+        });
+      });
+  });
+  busboy.end(request.rawBody);
 };
