@@ -10,7 +10,8 @@ firebase.initializeApp(config);
 
 const {
   validateSignupData,
-  validateLoginData
+  validateLoginData,
+  reduceUserDetails
 } = require('../util/validators');
 
 exports.signup = (request, response) => {
@@ -119,6 +120,52 @@ exports.login = (request, response) => {
     });
 };
 
+// Add user details
+exports.addUserDetails = (request, response) => {
+  let userDetails = reduceUserDetails(request.body);
+
+  db.doc(`/users/${request.user.handle}`)
+    .update(userDetails)
+    .then(() => {
+      return response.json({
+        message: 'Details added successfully'
+      })
+    })
+    .catch((err) => {
+      console.error(err);
+      return response.status(500).json({
+        error: err.code
+      });
+    })
+};
+
+//Get own user details
+exports.getAuthenticatedUser = (request, response) => {
+  let userData = {};
+  db.doc(`/users/${request.user.handle}`)
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        userData.credentials = doc.data();
+        return db.collection('likes').where('userHandle', '==', request.user.handle).get();
+      }
+    })
+    .then((data) => {
+      userData.likes = [];
+      data.forEach((doc) => {
+        userData.likes.push(doc.data())
+      });
+      return response.json(userData);
+    })
+    .catch((err) => {
+      console.error(err);
+      return response.status(500).json({
+        error: err.code
+      });
+    })
+}
+
+// upload profile image for user
 exports.uploadImage = (request, response) => {
   console.log('start');
   const BusBoy = require('busboy');
@@ -134,12 +181,12 @@ exports.uploadImage = (request, response) => {
   let imageToBeUploaded = {};
 
   busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
-    // if (mimetype !== 'image/jpeg' && mimetype !== 'image/png') {
-    //   return response.status(400).json({
-    //     error: 'Wrong filetype submitted'
-    //   });
-    // }
-    // image.png
+    if (mimetype !== 'image/jpeg' && mimetype !== 'image/png') {
+      return response.status(400).json({
+        error: 'Wrong filetype submitted'
+      });
+    }
+    image.png
     const imageExtension = filename.split('.')[
       filename.split('.').length - 1
     ];
