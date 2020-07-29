@@ -15,6 +15,12 @@ let db = {
     createdAt: '2020-07-26T01:37:01.730Z',
     likeCount: 5,
     commentCount: 2
+  }],
+  comments: [{
+    userHandler: 'user',
+    screamId: 'ksdknadnaodbneoo',
+    body: 'nice one daug',
+    createdAt: '2019-12-29T10:59:59.982Z'
   }]
 }
 const userDetails = {
