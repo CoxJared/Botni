@@ -96,7 +96,6 @@ exports.login = (request, response) => {
   if (!valid) {
     return response.status(400).json(errors);
   }
-
   firebase
     .auth()
     .signInWithEmailAndPassword(user.email, user.password)
@@ -109,7 +108,6 @@ exports.login = (request, response) => {
       });
     })
     .catch((err) => {
-      console.err(err);
       return response.status(403).json({
         general: 'wrong credentails, please try again'
       });
