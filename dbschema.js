@@ -21,7 +21,17 @@ let db = {
     screamId: 'ksdknadnaodbneoo',
     body: 'nice one daug',
     createdAt: '2019-12-29T10:59:59.982Z'
-  }]
+  }],
+  notifications: [
+    {
+      recipient: 'user',
+      sender: 'john',
+      read: 'true | false',
+      screamId: 'jsnnadionidnasnidosa',
+      type: 'like | comment',
+      createdAt: '2019-03-15T10:59:52.798Z'
+    }
+  ]
 }
 const userDetails = {
 
