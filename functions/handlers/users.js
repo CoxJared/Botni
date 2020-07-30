@@ -75,12 +75,13 @@ exports.signup = (request, response) => {
         });
       } else {
         return response.status(500).json({
-          error: err.code
+          general: 'Something went wrong, please try again'
         });
       }
     });
 };
 
+// Log user in
 exports.login = (request, response) => {
   const user = {
     email: request.body.email,
@@ -109,13 +110,8 @@ exports.login = (request, response) => {
     })
     .catch((err) => {
       console.err(err);
-      if (err.code === 'auth/wrong-password') {
-        return response.status(403).json({
-          general: 'wrong credentails, please try again'
-        });
-      }
-      return response.status(500).json({
-        error: error.code
+      return response.status(403).json({
+        general: 'wrong credentails, please try again'
       });
     });
 };
