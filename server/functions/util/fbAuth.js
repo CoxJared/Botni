@@ -1,7 +1,7 @@
 const {
   admin,
   db
-} = require('../util/admin');
+} = require('./admin');
 
 module.exports = (request, response, next) => {
   let idToken;
