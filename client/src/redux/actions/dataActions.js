@@ -8,9 +8,8 @@ import {
   POST_POST,
   CLEAR_ERRORS,
   LOADING_UI,
-  SET_POST,
   STOP_LOADING_UI,
-  SUBMIT_CONTENT,
+  SUBMIT_COMMENT,
   SET_POSTS
 } from '../types';
 import axios from 'axios';
@@ -106,7 +105,7 @@ export const submitComment = (postId, commentData) => (dispatch) => {
     .post(`/scream/${postId}/comment`, commentData)
     .then((response) => {
       dispatch({
-        type: SUBMIT_CONTENT,
+        type: SUBMIT_COMMENT,
         payload: response.data
       });
       dispatch(clearErrors());

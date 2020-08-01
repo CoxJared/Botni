@@ -11,7 +11,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 
 //components
-import NavBar from './components/NavBar';
+import NavBar from './components/layout/NavBar';
 import AuthRoute from './util/AuthRoute';
 
 //pages
