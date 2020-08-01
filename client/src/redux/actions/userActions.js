@@ -55,7 +55,7 @@ export const signupUser = (newUserData, history) => (dispatch) => {
     });
 }
 
-export const logoutUSer = () => (dispatch) => {
+export const logoutUser = () => (dispatch) => {
   localStorage.removeItem('FBIDToken');
   delete axios.defaults.headers.common['Authorization'];
   dispatch({
@@ -90,7 +90,7 @@ export const uploadImage = (formData) => (dispatch) => {
     .catch(err => console.log(err));
 };
 
-export const editUSerDetails = (userDetails) => (dispatch) => {
+export const editUserDetails = (userDetails) => (dispatch) => {
   dispatch({
     type: LOADING_USER
   });

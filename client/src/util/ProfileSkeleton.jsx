@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@materual-ui/core';
-import NoImg from '../images/NoImg.png';
+import NoImg from '../images/no-image.png';
 
 //MUI
+import withStyles from '@material-ui/core/styles/withStyles';
 import Paper from '@material-ui/core/Paper';
 
 //Icons
@@ -12,7 +12,7 @@ import LinkIcon from '@material-ui/icons/Link';
 import CalendarToday from '@material-ui/icons/CalendarToday';
 
 const styles = (theme) => ({
-  ...theme,
+  ...theme.styleSpreading,
   handle: {
     height: 20,
     backgroundColor: theme.palette.primary.main,
@@ -61,7 +61,7 @@ const ProfileSkeleton = (props) => {
   );
 };
 
-ProfileSkeleton.PropTypes = {
+ProfileSkeleton.propTypes = {
   classes: PropTypes.object.isRequired
 };
 

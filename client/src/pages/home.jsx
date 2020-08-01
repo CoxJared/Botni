@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Grid } from '@material-ui/core';
-import axios from 'axios';
+import PropTypes from 'prop-types';
 
 import Post from '../components/Post';
 import Profile from '../components/profile/Profile';
 import PostSkeleton from '../util/PostSkeleton';
+
+import { connect } from 'react-redux';
+import { getPosts } from '../redux/actions/dataActions';
 export class home extends Component {
-  state = {
-    posts: null
-  };
   componentDidMount() {
     this.props.getPosts();
   }
@@ -26,7 +26,7 @@ export class home extends Component {
           {recentPostsMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>
-          <p>Profile...</p>
+          <Profile />
         </Grid>
       </Grid>
     );

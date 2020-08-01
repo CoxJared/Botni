@@ -8,7 +8,7 @@ import { Card, CardMedia, Cardcontent, CardContent } from '@material-ui/core';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 const styles = (theme) => ({
-  ...theme,
+  ...theme.styleSpreading,
   card: {
     dispaly: 'flex',
     marginBottom: 20
@@ -51,7 +51,7 @@ const styles = (theme) => ({
 const PostSkeleton = (props) => {
   const { classes } = props;
 
-  const content = Array.from({ length: 5 }).map((item, item) => (
+  const content = Array.from({ length: 5 }).map((item, index) => (
     <Card className={classes.card} key={index}>
       <CardMedia className={classes.cover} image={NoImg} />
       <CardContent className={classes.CardContent}>
@@ -63,7 +63,7 @@ const PostSkeleton = (props) => {
       </CardContent>
     </Card>
   ));
-
+  // return <div />;
   return <Fragment>{content}</Fragment>;
 };
 
@@ -71,4 +71,4 @@ PostSkeleton.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(ScreamSkeleton);
+export default withStyles(styles)(PostSkeleton);

@@ -23,7 +23,7 @@ import { getPost, clearErrors } from '../../redux/actions/dataActions';
 import { typography } from '@material-ui/system';
 
 const styles = (theme) => ({
-  ...theme,
+  ...theme.styleSpreading,
   profileImage: {
     maxWidth: 200,
     height: 200,

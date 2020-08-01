@@ -8,7 +8,10 @@ import MyButton from '../../util/MyButton';
 import ProfileSkeleton from '../../util/ProfileSkeleton';
 
 //MUI
-import { Button, Typography, MuiLink, Paper } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import MuiLink from '@material-ui/core/Link';
+import Paper from '@material-ui/core/Paper';
 
 //Icons
 import LocationOn from '@material-ui/icons/LocationOn';
@@ -18,11 +21,11 @@ import EditIcon from '@material-ui/icons/Edit';
 import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
 
 //redux
-import { connect } from 'rect-redux';
-import { logoutUSer, uploadImage } from '../../redux/actions/userActions';
+import { connect } from 'react-redux';
+import { logoutUser, uploadImage } from '../../redux/actions/userActions';
 
 const styles = (theme) => ({
-  ...theme
+  ...theme.styleSpread
 });
 
 class Profile extends Component {
@@ -104,7 +107,7 @@ class Profile extends Component {
             <MyButton tip="Logout" onClick={this.handleLogout}>
               <KeyboardReturn color="primary" />
             </MyButton>
-            <EditDetail />
+            <EditDetails />
           </div>
         </Paper>
       ) : (
@@ -146,7 +149,7 @@ const mapStateToProps = (state) => ({
 
 const mapActionsToProps = { logoutUser, uploadImage };
 
-Profile.PropTypes = {
+Profile.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   uploadImage: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,

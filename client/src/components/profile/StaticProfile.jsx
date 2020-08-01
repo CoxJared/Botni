@@ -11,7 +11,7 @@ import { MuiLink, Paper, Typograph } from '@material-ui/core';
 import { LocationOn, LinkIcon, CalendarToday } from '@material-ui/icons';
 
 const styles = (theme) => ({
-  ...theme
+  ...theme.styleSpreading
 });
 
 const StaticProfile = (props) => {
