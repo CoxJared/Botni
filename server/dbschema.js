@@ -9,16 +9,16 @@ let db = {
     website: 'https://user.com',
     location: 'london,UK'
   }],
-  screams: [{
+  posts: [{
     userHandle: 'user',
-    body: 'this is the scream body',
+    body: 'this is the post body',
     createdAt: '2020-07-26T01:37:01.730Z',
     likeCount: 5,
     commentCount: 2
   }],
   comments: [{
     userHandler: 'user',
-    screamId: 'ksdknadnaodbneoo',
+    postId: 'ksdknadnaodbneoo',
     body: 'nice one daug',
     createdAt: '2019-12-29T10:59:59.982Z'
   }],
@@ -27,7 +27,7 @@ let db = {
       recipient: 'user',
       sender: 'john',
       read: 'true | false',
-      screamId: 'jsnnadionidnasnidosa',
+      postId: 'jsnnadionidnasnidosa',
       type: 'like | comment',
       createdAt: '2019-03-15T10:59:52.798Z'
     }
@@ -47,6 +47,6 @@ const userDetails = {
   },
   likes: [{
     userHandle: 'user',
-    screamId: 'asdjnbasdn1nd'
+    postId: 'asdjnbasdn1nd'
   }]
 }

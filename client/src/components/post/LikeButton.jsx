@@ -7,7 +7,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 // REdux
 import { connect } from 'react-redux';
-import { likeScream, unlikeScream } from '../../redux/actions/dataActions';
+import { likePost, unlikePost } from '../../redux/actions/dataActions';
 
 export class LikeButton extends Component {
   likedPost = () => {
