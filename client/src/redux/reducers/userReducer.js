@@ -1,8 +1,5 @@
 import {
   SET_USER,
-  SET_ERRORS,
-  CLEAR_ERRORS,
-  LOADING_UI,
   SET_AUTHENTICATED,
   SET_UNAUTHENTICATED,
   LOADING_USER,
@@ -10,9 +7,6 @@ import {
   UNLIKE_POST,
   MARK_NOTIFICATIONS_READ
 } from '../types';
-import {
-  Stats
-} from 'fs';
 
 const initialState = {
   authenticated: false,

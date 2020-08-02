@@ -25,7 +25,11 @@ import { connect } from 'react-redux';
 import { logoutUser, uploadImage } from '../../redux/actions/userActions';
 
 const styles = (theme) => ({
-  ...theme.styleSpread
+  ...theme.styleSpread,
+  profileImage: {
+    width: '100%',
+    margin: 'auto'
+  }
 });
 
 class Profile extends Component {
@@ -57,7 +61,11 @@ class Profile extends Component {
         <Paper className={classes.paper}>
           <div className={classes.profile}>
             <div className="image-wrapper">
-              <img src={imageUrl} alt="profile" className="profile-image" />
+              <img
+                src={imageUrl}
+                alt="profile"
+                className={classes.profileImage}
+              />
               <input
                 type="file"
                 id="imageInput"
@@ -80,7 +88,7 @@ class Profile extends Component {
                 color="primary"
                 variant="h5"
               >
-                2{handle}
+                @{handle}
               </MuiLink>
               <hr />
               {bio && <Typography variant="body2">{bio}</Typography>}

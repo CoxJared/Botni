@@ -1,5 +1,5 @@
 import {
-  SET_POST,
+  SET_POSTS,
   LOADING_DATA,
   LIKE_POST,
   UNLIKE_POST,
@@ -8,9 +8,9 @@ import {
   POST_POST,
   CLEAR_ERRORS,
   LOADING_UI,
+  SET_POST,
   STOP_LOADING_UI,
   SUBMIT_COMMENT,
-  SET_POSTS
 } from '../types';
 import axios from 'axios';
 
@@ -20,14 +20,14 @@ export const getPosts = () => (dispatch) => {
     type: LOADING_DATA
   });
   axios
-    .get('/screas')
+    .get('/screams')
     .then(response => {
       dispatch({
         type: SET_POSTS,
         payload: response.data
       });
     })
-    .catch(error => {
+    .catch(err => {
       dispatch({
         type: SET_POSTS,
         payload: []
@@ -44,6 +44,9 @@ export const getPost = (postId) => (dispatch) => {
       dispatch({
         type: SET_POST,
         payload: response.data
+      });
+      dispatch({
+        type: STOP_LOADING_UI
       });
     })
     .catch((err) =>

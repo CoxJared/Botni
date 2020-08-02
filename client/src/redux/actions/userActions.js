@@ -16,9 +16,7 @@ export const loginUser = (userData, history) => (dispatch) => {
   axios
     .post('/login', userData)
     .then((response) => {
-      const FBIdToken = `Bearer ${response.data.token}`;
-      localStorage.setItem('FBIdToken', FBIdToken);
-      axios.defaults.headers.common['Authorization'] = FBIdToken;
+      setAuthorizationHeader(response.data.token);
       dispatch(getUserData());
       dispatch({
         type: CLEAR_ERRORS
@@ -56,7 +54,7 @@ export const signupUser = (newUserData, history) => (dispatch) => {
 }
 
 export const logoutUser = () => (dispatch) => {
-  localStorage.removeItem('FBIDToken');
+  localStorage.removeItem('FBIdToken');
   delete axios.defaults.headers.common['Authorization'];
   dispatch({
     type: SET_UNAUTHENTICATED

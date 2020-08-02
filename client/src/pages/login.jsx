@@ -16,39 +16,11 @@ import { loginUser } from '../redux/actions/userActions';
 // const styles = (theme) => ({
 //   ...theme
 // });
-const styles = {
-  typography: {
-    useNextVariants: true
-  },
-  form: {
-    textAlign: 'center'
-  },
-  image: {
-    margin: '20px auto 0 auto',
-    width: '100px'
-  },
-  pageTitle: {
-    margin: '20px auto'
-  },
-  textField: {
-    margin: '10px '
-  },
-  button: {
-    marginTop: 20,
-    marginBottom: 20,
-    position: 'relative'
-  },
-  customError: {
-    color: 'red',
-    fontSize: '.8rem',
-    marginTop: 10
-  },
-  progress: {
-    position: 'absolute'
-  }
-};
+const styles = (theme) => ({
+  ...theme.styleSpreading
+});
 
-export class login extends Component {
+class login extends Component {
   constructor() {
     super();
     this.state = {
@@ -56,6 +28,12 @@ export class login extends Component {
       password: '',
       errors: {}
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.UI.erros) {
+      this.setState({errors: nextProps.UI.errors});
+    }
   }
 
   handleSubmit = (event) => {
@@ -78,6 +56,7 @@ export class login extends Component {
       UI: { loading }
     } = this.props;
     const { errors } = this.state;
+
     return (
       <Grid container className={classes.form}>
         <Grid item sm />

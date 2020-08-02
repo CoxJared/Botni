@@ -36,7 +36,7 @@ export default function (state = initialState, action) {
     case LIKE_POST:
     case UNLIKE_POST:
       let index = state.posts.findIndex(
-        (post) => post.postId === action.payload.screamId
+        (post) => post.postId === action.payload.postId
       );
       state.posts[index] = action.payload;
       if (state.post.postId === action.payload.postId) {
@@ -63,7 +63,7 @@ export default function (state = initialState, action) {
         ...state,
         post: {
           ...state.post,
-          comment: [action.payload, ...state.post.comments]
+          comments: [action.payload, ...state.post.comments]
         }
       };
     default:
