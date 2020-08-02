@@ -223,7 +223,6 @@ exports.getAuthenticatedUser = (request, response) => {
 
 // upload profile image for user
 exports.uploadImage = (request, response) => {
-  console.log('start');
   const BusBoy = require('busboy');
   const path = require('path');
   const os = require('os');
@@ -242,7 +241,6 @@ exports.uploadImage = (request, response) => {
         error: 'Wrong filetype submitted'
       });
     }
-    image.png
     const imageExtension = filename.split('.')[
       filename.split('.').length - 1
     ];

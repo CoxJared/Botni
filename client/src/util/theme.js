@@ -53,7 +53,7 @@ export default {
       marginBottom: 20
     },
     paper: {
-      padding: 20
+      padding: 30
     },
     profile: {
       '& .profile-image': {

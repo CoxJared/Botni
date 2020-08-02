@@ -27,8 +27,13 @@ import { logoutUser, uploadImage } from '../../redux/actions/userActions';
 const styles = (theme) => ({
   ...theme.styleSpread,
   profileImage: {
-    width: '100%',
-    margin: 'auto'
+    width: '80%',
+    margin: 'auto',
+    borderRadius: '10%',
+    padding: '10%'
+  },
+  loginRequestText: {
+    padding: 10
   }
 });
 
@@ -120,8 +125,12 @@ class Profile extends Component {
         </Paper>
       ) : (
         <Paper className={classes.paper}>
-          <Typography variant="body2" align="center">
-            No profile ofund, please login again
+          <Typography
+            variant="body3"
+            align="center"
+            className={classes.loginRequestText}
+          >
+            No profile found, please login again
           </Typography>
           <div className={classes.buttons}>
             <Button
