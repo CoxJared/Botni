@@ -111,7 +111,7 @@ class PostDialog extends Component {
             component={Link}
             color="primary"
             variant="h5"
-            to={`/users/${userhandle}`}
+            to={`/users/${userHandle}`}
           >
             @{userHandle}
           </Typography>

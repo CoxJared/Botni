@@ -38,7 +38,7 @@ class CommentForm extends Component {
     const { classes, authenticated } = this.props;
     const errors = this.state.errors;
 
-    const commentFormMakrup = authenticated ? (
+    const commentFormMarkup = authenticated ? (
       <Grid item sm={12} style={{ textAlign: 'center' }}>
         <form onSubmit={this.handleSubmit}>
           <TextField
@@ -52,18 +52,19 @@ class CommentForm extends Component {
             fullWidth
             className={classes.textField}
           />
-          <Buttontype
+          <Button
             type="submit"
             variant="container"
             color="primary"
             className={classes.button}
           >
             Submit
-          </Buttontype>
+          </Button>
         </form>
         <hr className={classes.visibleSeparator} />
       </Grid>
     ) : null;
+    return commentFormMarkup;
   }
 }
 
@@ -81,5 +82,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { submitComment })(
-  withStyles(styles)(COmmentForm)
+  withStyles(styles)(CommentForm)
 );

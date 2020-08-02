@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
-import Post from '../components/Post';
+import Post from '../components/post/Post';
 import Profile from '../components/profile/Profile';
 import PostSkeleton from '../util/PostSkeleton';
 

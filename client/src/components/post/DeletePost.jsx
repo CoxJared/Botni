@@ -54,9 +54,9 @@ class DeletePost extends Component {
         >
           <DialogTitle>Are you sure you want to delete this post?</DialogTitle>
           <DialogActions>
-            <Butoon onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleClose} color="primary">
               Cancel
-            </Butoon>
+            </Button>
             <Button onClick={this.deletePost} color="secondary">
               Delete
             </Button>
