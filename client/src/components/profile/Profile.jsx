@@ -27,10 +27,10 @@ import { logoutUser, uploadImage } from '../../redux/actions/userActions';
 const styles = (theme) => ({
   ...theme.styleSpread,
   profileImage: {
-    width: '80%',
+    width: '90%',
     margin: 'auto',
-    borderRadius: '10%',
-    padding: '10%'
+    borderRadius: '8%',
+    padding: '5%'
   },
   // loginRequestText: {
   // padding: 10

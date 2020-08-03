@@ -32,10 +32,10 @@ const styles = (theme) => ({
     marginBottom: 10
   },
   profileImage: {
-    width: '80%',
+    width: '90%',
     margin: 'auto',
-    borderRadius: '10%',
-    padding: '10%'
+    borderRadius: '8%',
+    padding: '5%'
   }
 });
 
