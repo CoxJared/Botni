@@ -25,7 +25,7 @@ export class LikeButton extends Component {
     this.props.likePost(this.props.postId);
   };
   unlikePost = () => {
-    this.props.unlikepost(this.props.postId);
+    this.props.unlikePost(this.props.postId);
   };
   render() {
     const { authenticated } = this.props.user;
