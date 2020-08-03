@@ -21,7 +21,7 @@ export class home extends Component {
     );
 
     return (
-      <Grid container spacing={16}>
+      <Grid container spacing={2}>
         <Grid item sm={8} xs={12}>
           {recentPostsMarkup}
         </Grid>

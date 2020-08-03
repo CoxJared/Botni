@@ -32,8 +32,17 @@ const styles = (theme) => ({
     borderRadius: '10%',
     padding: '10%'
   },
-  loginRequestText: {
-    padding: 10
+  // loginRequestText: {
+  // padding: 10
+  // },
+  paper: {
+    padding: 20
+  },
+  buttons: {
+    marginTop: 15
+  },
+  button: {
+    marginRight: 10
   }
 });
 
@@ -138,14 +147,16 @@ class Profile extends Component {
               color="primary"
               component={Link}
               to="/login"
+              className={classes.button}
             >
               Login
             </Button>
             <Button
               variant="container"
-              color="secondary"
+              color="primary"
               component={Link}
               to="signup"
+              className={classes.button}
             >
               Signup
             </Button>
