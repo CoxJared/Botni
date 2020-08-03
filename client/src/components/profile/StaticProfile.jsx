@@ -5,10 +5,14 @@ import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 
 //MUI
-import { MuiLink, Paper, Typograph } from '@material-ui/core';
+import MuiLink from '@material-ui/core/Link';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
-//Icins
-import { LocationOn, LinkIcon, CalendarToday } from '@material-ui/icons';
+//Icons
+import LocationOn from '@material-ui/icons/LocationOn';
+import LinkIcon from '@material-ui/icons/Link';
+import CalendarToday from '@material-ui/icons/CalendarToday';
 
 const styles = (theme) => ({
   ...theme.styleSpreading
@@ -37,7 +41,7 @@ const StaticProfile = (props) => {
             @{handle}
           </MuiLink>
           <h1 />
-          {bio && <Typography variant="body2">{Bio}</Typography>}
+          {bio && <Typography variant="body2">{bio}</Typography>}
           <hr />
           {location && (
             <Fragment>

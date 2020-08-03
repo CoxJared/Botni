@@ -26,11 +26,11 @@ class user extends Component {
 
     this.props.getUserData(handle);
     axios
-      .get(`/user/${handle}`)
-      .then((respone) => {
+      .get(`/users/${handle}`)
+      .then((response) => {
         this.setState({ profile: response.data.user });
       })
-      .cathc((err) => console.log(err));
+      .catch((err) => console.log(err));
   }
 
   render() {
@@ -42,7 +42,7 @@ class user extends Component {
     ) : posts === null ? (
       <p>No Posts from this user</p>
     ) : !postIdParam ? (
-      post.map((post) => <Post key={post.postId} post={post} />)
+      posts.map((post) => <Post key={post.postId} post={post} />)
     ) : (
       posts.map((post) => {
         if (post.postId !== postIdParam) {
