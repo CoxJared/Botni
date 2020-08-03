@@ -22,16 +22,20 @@ let db = {
     body: 'nice one daug',
     createdAt: '2019-12-29T10:59:59.982Z'
   }],
-  notifications: [
-    {
-      recipient: 'user',
-      sender: 'john',
-      read: 'true | false',
-      postId: 'jsnnadionidnasnidosa',
-      type: 'like | comment',
-      createdAt: '2019-03-15T10:59:52.798Z'
-    }
-  ]
+  notifications: [{
+    recipient: 'user',
+    sender: 'john',
+    read: 'true | false',
+    postId: 'jsnnadionidnasnidosa',
+    type: 'like | comment',
+    createdAt: '2019-03-15T10:59:52.798Z'
+  }],
+  plants: [{
+    name: 'tomatoe',
+    type: 'Fruit | Vegtable',
+    createdAt: '2019-03-15T10:59:52.798Z',
+    imageUrl: ''
+  }]
 }
 const userDetails = {
 

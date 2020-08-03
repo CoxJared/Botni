@@ -28,6 +28,10 @@ const {
   markNotificationsRead
 } = require('./handlers/users');
 
+const {
+  postOnePlant
+} = require('./handlers/plants');
+
 // post routes
 app.get('/posts', getAllPosts);
 app.post('/post', FBAuth, postOnePost);
@@ -45,6 +49,9 @@ app.post('/user', FBAuth, addUserDetails);
 app.get('/user', FBAuth, getAuthenticatedUser);
 app.get('/user/:handle', getUserDetails);
 app.post('/notifications', FBAuth, markNotificationsRead);
+
+//plant routes
+app.post('/plant', FBAuth, postOnePlant);
 
 exports.api = functions.https.onRequest(app);
 
