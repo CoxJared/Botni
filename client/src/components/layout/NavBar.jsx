@@ -18,7 +18,7 @@ import HomeIcon from '@material-ui/icons/Home';
 const styles = (theme) => ({
   ...theme.styleSpreading,
   appTitle: {
-    margin: ' 0 400px 0 10px',
+    margin: ' 0 500px 0 10px',
     fontSize: '30px;'
   },
   appLogo: {
@@ -34,7 +34,9 @@ export class NavBar extends Component {
           {authenticated ? (
             <Fragment>
               <img className={classes.appLogo} src={appLogo} alt="App Logo" />
-              <div className={classes.appTitle}>Botni</div>
+              <Link to="/">
+                <div className={classes.appTitle}>Botni</div>
+              </Link>
               <PostPost />
               <Link to="/">
                 <MyButton tip="home">
@@ -46,7 +48,9 @@ export class NavBar extends Component {
           ) : (
             <Fragment>
               <img className={classes.appLogo} src={appLogo} alt="App Logo" />
-              <div className={classes.appTitle}>Botni</div>
+              <Link to="/">
+                <div className={classes.appTitle}>Botni</div>
+              </Link>
               <Button color="inherit" component={Link} to="/login">
                 login
               </Button>
