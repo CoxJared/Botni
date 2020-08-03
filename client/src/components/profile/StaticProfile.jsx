@@ -40,7 +40,7 @@ const StaticProfile = (props) => {
           >
             @{handle}
           </MuiLink>
-          <h1 />
+          <hr />
           {bio && <Typography variant="body2">{bio}</Typography>}
           <hr />
           {location && (

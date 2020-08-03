@@ -3,7 +3,6 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
 import AppIcon from '../images/free-plant-cartoon-download-free-clip-art-free-clip-art-on-cartoon-plants-png-492_597.png';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 //MUI
 import Grid from '@material-ui/core/Grid';

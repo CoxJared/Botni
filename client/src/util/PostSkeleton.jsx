@@ -3,7 +3,7 @@ import NoImg from '../images/no-image.png';
 import PropTypes from 'prop-types';
 
 //MUI
-import { Card, CardMedia, Cardcontent, CardContent } from '@material-ui/core';
+import { Card, CardMedia, CardContent } from '@material-ui/core';
 
 import withStyles from '@material-ui/core/styles/withStyles';
 

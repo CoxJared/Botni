@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 //MUI
-import { Button, Grid, Textfield, TextField } from '@material-ui/core';
+import { Button, Grid, TextField } from '@material-ui/core';
 
 //redux
 import { connect } from 'react-redux';

@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import { MuiThemeProvider } from '@material-ui/core';
-import themeFile from './util/theme';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 //redux

@@ -20,7 +20,6 @@ import ChatIcon from '@material-ui/icons/Chat';
 // Redux stuff
 import { connect } from 'react-redux';
 import { getPost, clearErrors } from '../../redux/actions/dataActions';
-import { typography } from '@material-ui/system';
 
 const styles = (theme) => ({
   ...theme.styleSpreading,
