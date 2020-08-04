@@ -73,11 +73,7 @@ class Post extends Component {
       ) : null;
     return (
       <Card className={classes.card}>
-        <CardMedia
-          image={image}
-          title="Profile image"
-          className={classes.image}
-        />
+        <CardMedia image={image} title="Post image" className={classes.image} />
         <CardContent className={classes.content}>
           <CardMedia
             image={userImage}

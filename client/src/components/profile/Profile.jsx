@@ -30,11 +30,9 @@ const styles = (theme) => ({
     width: '90%',
     margin: 'auto',
     borderRadius: '8%',
-    padding: '5%'
+    padding: '5%',
+    cursor: 'pointer'
   },
-  // loginRequestText: {
-  // padding: 10
-  // },
   paper: {
     padding: 20
   },
@@ -83,7 +81,8 @@ class Profile extends Component {
               <img
                 src={imageUrl}
                 alt="profile"
-                className={classes.profileImage}
+                className={`${classes.profileImage} cursorHover`}
+                onClick={this.handleEditPicture}
               />
               <input
                 type="file"
@@ -91,13 +90,13 @@ class Profile extends Component {
                 hidden="hidden"
                 onChange={this.handleImageChange}
               />
-              <MyButton
+              {/* <MyButton
                 tip="Edit profile picture"
                 onClick={this.handleEditPicture}
                 btnClassName="button"
               >
                 <EditIcon color="primary" />
-              </MyButton>
+              </MyButton> */}
             </div>
             <hr />
             <div className="profile-details">
