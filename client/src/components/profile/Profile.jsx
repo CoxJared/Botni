@@ -109,8 +109,12 @@ class Profile extends Component {
                 @{handle}
               </MuiLink>
               <hr />
-              {bio && <Typography variant="body2">{bio}</Typography>}
-              {/* <hr /> */}
+              {bio && (
+                <Typography variant="body2">
+                  {bio}
+                  <hr />
+                </Typography>
+              )}
               {location && (
                 <Fragment>
                   <LocationOn color="primary" />
@@ -125,6 +129,7 @@ class Profile extends Component {
                     {' '}
                     {website}
                   </a>
+                  <hr />
                 </Fragment>
               )}
               <CalendarToday color="primary" />{' '}
