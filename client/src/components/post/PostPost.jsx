@@ -123,7 +123,7 @@ class PostPost extends Component {
           <DialogContent>
             <form onSubmit={this.handleSubmit}>
               <img
-                alt="Post's image"
+                alt="Post"
                 src={this.state.image}
                 className={classes.postImage}
               />

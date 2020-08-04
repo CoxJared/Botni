@@ -79,8 +79,6 @@ class Post extends Component {
           className={classes.image}
         />
         <CardContent className={classes.content}>
-          {/* <img className={classes.userImage} src={userImage} alt="user image" /> */}
-
           <CardMedia
             image={userImage}
             title="Profile image"
@@ -103,7 +101,7 @@ class Post extends Component {
           <Typography variant="body1">{body}</Typography>
           <LikeButton postId={postId} />
           <span>{likeCount} Likes</span>
-          <MyButton>
+          <MyButton tip="comments">
             <ChatIcon color="primary" />
           </MyButton>
           <span>{commentCount} comments</span>

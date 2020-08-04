@@ -22,12 +22,10 @@ export class LikeButton extends Component {
   };
 
   likePost = () => {
-    // console.log('Liking post: ', this.props.postId);
     this.props.likePost(this.props.postId);
   };
 
   unlikePost = () => {
-    // console.log('unliking post: ', this.props.postId);
     this.props.unlikePost(this.props.postId);
   };
 
@@ -39,7 +37,7 @@ export class LikeButton extends Component {
           <FavoriteBorder color="primary" />
         </MyButton>
       </Link>
-    ) : this.likedPost ? (
+    ) : this.likedPost() ? (
       <MyButton tip="Undo like" onClick={this.unlikePost}>
         <FavoriteIcon color="primary" />
       </MyButton>
