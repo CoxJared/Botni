@@ -63,27 +63,18 @@ export const postPost = (newPost, formData) => (dispatch) => {
   axios
     .post('/post', newPost)
     .then((response) => {
-      dispatch({
-        type: POST_POST,
-        payload: response.data
-      });
-
-
-
-      console.log(response.data.postId);
-      console.log('form data', formData);
+      //TODO organize these reponses better
       axios
         .post(`/post/${response.data.postId}/image`, formData)
-        .then(() => {
-          dispatch(getPost());
+        .then((imageResponse) => {
+          console.log(imageResponse);
+          dispatch(clearErrors());
+          // dispatch({
+          //   type: POST_POST,
+          //   payload: response.data
+          // });
+          dispatch(getPosts());
         })
-        .catch(err => console.log(err));
-      console.log('posted succefullt')
-
-
-
-
-      dispatch(clearErrors());
     })
     .catch((err) => {
       dispatch({

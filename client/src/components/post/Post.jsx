@@ -22,14 +22,27 @@ const styles = {
   card: {
     position: 'relative',
     display: 'flex',
-    marginBottom: 20
+    marginBottom: 20,
+    height: 200
   },
   image: {
-    minWidth: 200
+    minWidth: 250
   },
   content: {
     padding: 25,
     objectFit: 'cover'
+  },
+  userImage: {
+    objectFit: 'cover',
+    width: 50,
+    height: 50,
+    borderRadius: '10%',
+    display: 'inline-block',
+    marginRight: 20
+  },
+  userHandle: {
+    position: 'relative',
+    bottom: 12
   }
 };
 
@@ -66,11 +79,20 @@ class Post extends Component {
           className={classes.image}
         />
         <CardContent className={classes.content}>
+          {/* <img className={classes.userImage} src={userImage} alt="user image" /> */}
+
+          <CardMedia
+            image={userImage}
+            title="Profile image"
+            className={classes.userImage}
+          />
+
           <Typography
             variant="h5"
             component={Link}
             to={`users/${userHandle}`}
             color="primary"
+            className={classes.userHandle}
           >
             {userHandle}
           </Typography>
