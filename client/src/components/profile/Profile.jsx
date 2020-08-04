@@ -110,7 +110,7 @@ class Profile extends Component {
               </MuiLink>
               <hr />
               {bio && <Typography variant="body2">{bio}</Typography>}
-              <hr />
+              {/* <hr /> */}
               {location && (
                 <Fragment>
                   <LocationOn color="primary" />

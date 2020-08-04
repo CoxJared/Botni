@@ -42,6 +42,7 @@ class EditDetails extends Component {
     });
   };
   handleOpen = () => {
+    console.log('opening');
     this.setState({
       open: true
     });
@@ -77,7 +78,7 @@ class EditDetails extends Component {
       <Fragment>
         <MyButton
           tip="Edit Details"
-          onclick={this.handleOpen}
+          onClick={this.handleOpen}
           btnClassName={classes.button}
         >
           <EditIcon color="primary" />
@@ -125,7 +126,7 @@ class EditDetails extends Component {
             </form>
           </DialogContent>
           <DialogActions>
-            <Button onclick={this.handleclose} color="primary">
+            <Button onClick={this.handleclose} color="primary">
               Cancel
             </Button>
             <Button onClick={this.handleSubmit} color="primary">

@@ -29,7 +29,7 @@ const styles = {
     minWidth: 250
   },
   content: {
-    padding: 25,
+    padding: '10 25',
     objectFit: 'cover'
   },
   userImage: {
