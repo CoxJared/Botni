@@ -23,6 +23,7 @@ import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
 //redux
 import { connect } from 'react-redux';
 import { logoutUser, uploadImage } from '../../redux/actions/userActions';
+import ProfilePlants from './ProfilePlants';
 
 const styles = (theme) => ({
   ...theme.styleSpread,
@@ -81,6 +82,7 @@ class Profile extends Component {
               <img
                 src={imageUrl}
                 alt="profile"
+                tip="Edit Profile Picture"
                 className={`${classes.profileImage} cursorHover`}
                 onClick={this.handleEditPicture}
               />
@@ -90,13 +92,6 @@ class Profile extends Component {
                 hidden="hidden"
                 onChange={this.handleImageChange}
               />
-              {/* <MyButton
-                tip="Edit profile picture"
-                onClick={this.handleEditPicture}
-                btnClassName="button"
-              >
-                <EditIcon color="primary" />
-              </MyButton> */}
             </div>
             <hr />
             <div className="profile-details">
@@ -108,6 +103,8 @@ class Profile extends Component {
               >
                 @{handle}
               </MuiLink>
+              <hr />
+              <ProfilePlants />
               <hr />
               {bio && (
                 <Typography variant="body2">

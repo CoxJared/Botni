@@ -162,7 +162,8 @@ exports.getUserDetails = (request, response) => {
           userImage: doc.data().userImage,
           likeCount: doc.data().likeCount,
           commentCount: doc.data().commentCount,
-          postId: doc.id
+          postId: doc.id,
+          plants: doc.data().plants
         })
       });
       return response.json(userData);
