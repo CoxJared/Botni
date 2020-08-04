@@ -67,14 +67,18 @@ export const postPost = (newPost, formData) => (dispatch) => {
         type: POST_POST,
         payload: response.data
       });
+
+
+
       console.log(response.data.postId);
+      console.log('form data', formData);
       axios
-        .post(`/posts/${response.postId}/image`, formData)
+        .post(`/post/${response.data.postId}/image`, formData)
         .then(() => {
           dispatch(getPost());
         })
         .catch(err => console.log(err));
-
+      console.log('posted succefullt')
 
 
 

@@ -24,8 +24,8 @@ import user from './pages/user';
 
 const theme = createMuiTheme(themeObject);
 
-// axios.defaults.baseURL =
-//   'https://us-central1-botany-fe963.cloudfunctions.net/api';
+axios.defaults.baseURL =
+  'https://us-central1-botany-fe963.cloudfunctions.net/api';
 
 const token = localStorage.FBIdToken;
 if (token) {
