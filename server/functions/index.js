@@ -29,7 +29,8 @@ const {
 } = require('./handlers/users');
 
 const {
-  postOnePlant
+  postOnePlant,
+  getAllPlants
 } = require('./handlers/plants');
 
 // post routes
@@ -52,6 +53,7 @@ app.post('/notifications', FBAuth, markNotificationsRead);
 
 //plant routes
 app.post('/plant', FBAuth, postOnePlant);
+app.get('/plants', FBAuth, getAllPlants);
 
 exports.api = functions.https.onRequest(app);
 
