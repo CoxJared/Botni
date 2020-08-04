@@ -22,11 +22,15 @@ export class LikeButton extends Component {
   };
 
   likePost = () => {
+    // console.log('Liking post: ', this.props.postId);
     this.props.likePost(this.props.postId);
   };
+
   unlikePost = () => {
+    // console.log('unliking post: ', this.props.postId);
     this.props.unlikePost(this.props.postId);
   };
+
   render() {
     const { authenticated } = this.props.user;
     const likeButton = !authenticated ? (

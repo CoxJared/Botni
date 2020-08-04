@@ -52,7 +52,7 @@ const ProfileSkeleton = (props) => {
           <div className={classes.handle} />
           <hr />
           <div className={classes.fullLine} />
-          <div classNAme={classes.fullLine} />
+          <div className={classes.fullLine} />
           <hr />
           <LocationOn color="primary" />
           <span>Location</span>
