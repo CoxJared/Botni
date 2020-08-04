@@ -33,9 +33,10 @@ class Notifications extends Component {
     this.setState({ anchorEl: null });
   };
   onMenuOpened = () => {
-    let unreadNotificationsIds = this.props.Notifications.filter(
-      (not) => !not.read
-    ).map((not) => not.notificationId);
+    // console.log(this.props.Notifications);
+    let unreadNotificationsIds = this.props.notifications
+      .filter((not) => !not.read)
+      .map((not) => not.notificationId);
     this.props.markNotificationsRead(unreadNotificationsIds);
   };
   render() {
