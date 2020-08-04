@@ -42,6 +42,7 @@ class Post extends Component {
         body,
         createdAt,
         userImage,
+        image,
         userHandle,
         postId,
         likeCount,
@@ -60,7 +61,7 @@ class Post extends Component {
     return (
       <Card className={classes.card}>
         <CardMedia
-          image={userImage}
+          image={image}
           title="Profile image"
           className={classes.image}
         />

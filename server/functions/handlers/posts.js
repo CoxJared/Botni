@@ -20,7 +20,8 @@ exports.getAllPosts = (request, response) => {
           createdAt: doc.data().createdAt,
           commentCount: doc.data().commentCount,
           likeCount: doc.data().likeCount,
-          userImage: doc.data().userImage
+          userImage: doc.data().userImage,
+          image: doc.data().image
         });
       })
       return response.json(posts);
@@ -147,7 +148,7 @@ exports.uploadPostImage = (request, response) => {
       .then(() => {
         const imageUrl = `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${imageFileName}?alt=media`;
         return db.doc(`/posts/${request.params.postId}`).update({
-          userImage: imageUrl
+          image: imageUrl
         });
       })
       .then(() => {

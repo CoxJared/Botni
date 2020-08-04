@@ -14,9 +14,12 @@ import {
 } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
+import EditIcon from '@material-ui/icons/Edit';
 
 import { connect } from 'react-redux';
 import { postPost, clearErrors } from '../../redux/actions/dataActions';
+
+import imagePlaceholder from '../../images/logo-white.png';
 
 const styles = (theme) => ({
   ...theme.styleSpreading,
@@ -32,6 +35,13 @@ const styles = (theme) => ({
     position: 'absolute',
     left: '91%',
     top: '6%'
+  },
+  postImage: {
+    backgroundColor: '#ddd',
+    width: 250,
+    height: 250,
+    padding: 10,
+    margin: '0 50px 0 50px'
   }
 });
 
@@ -40,7 +50,8 @@ class PostPost extends Component {
     open: false,
     body: '',
     errors: {},
-    image: null
+    imageFormData: null,
+    image: imagePlaceholder
   };
   componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
@@ -65,21 +76,23 @@ class PostPost extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleEditPicture = () => {
-    const fileInput = document.getElementById('imageInput');
+  handleAddPicture = () => {
+    const fileInput = document.getElementById('postimageInput');
     fileInput.click();
   };
-  handleImageChange = (event) => {
+  handlePostImageChange = (event) => {
     const image = event.target.files[0];
-    const formData = new FormData();
-    formData.append('image', image, image.name);
-    this.setState({ image: formData });
+    const imageFormData = new FormData();
+    console.log(image);
+    imageFormData.append('image', image, image.name);
+    this.setState({ image, imageFormData });
+
     // this.props.uploadImage(formData);
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.postPost({ body: this.state.body, image: this.state.image });
+    this.props.postPost({ body: this.state.body }, this.state.imageFormData);
   };
 
   render() {
@@ -109,6 +122,24 @@ class PostPost extends Component {
           <DialogTitle>Post a new Post</DialogTitle>
           <DialogContent>
             <form onSubmit={this.handleSubmit}>
+              <img
+                alt="Post's image"
+                src={this.state.image}
+                className={classes.postImage}
+              />
+              <input
+                type="file"
+                id="postimageInput"
+                hidden="hidden"
+                onChange={this.handlePostImageChange}
+              />
+              <MyButton
+                tip="Add Image"
+                onClick={this.handleAddPicture}
+                btnClassName="button"
+              >
+                <EditIcon color="primary" />
+              </MyButton>
               <TextField
                 name="body"
                 type="text"
@@ -122,17 +153,7 @@ class PostPost extends Component {
                 onChange={this.handleChange}
                 fullWidth
               />
-              <input
-                type="file"
-                id="imageInput"
-                hidden="hidden"
-                onChange={this.handleImageChange}
-              />
-              <MyButton
-                tip="Edit profile picture"
-                onClick={this.handleEditPicture}
-                btnClassName="button"
-              ></MyButton>
+
               <Button
                 type="submit"
                 variant="contained"

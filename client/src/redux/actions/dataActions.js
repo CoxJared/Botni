@@ -45,6 +45,7 @@ export const getPost = (postId) => (dispatch) => {
         type: SET_POST,
         payload: response.data
       });
+
       dispatch({
         type: STOP_LOADING_UI
       });
@@ -55,7 +56,7 @@ export const getPost = (postId) => (dispatch) => {
 };
 
 //post a post
-export const postPost = (newPost) => (dispatch) => {
+export const postPost = (newPost, formData) => (dispatch) => {
   dispatch({
     type: LOADING_UI
   });
@@ -66,6 +67,18 @@ export const postPost = (newPost) => (dispatch) => {
         type: POST_POST,
         payload: response.data
       });
+      console.log(response.data.postId);
+      axios
+        .post(`/posts/${response.postId}/image`, formData)
+        .then(() => {
+          dispatch(getPost());
+        })
+        .catch(err => console.log(err));
+
+
+
+
+
       dispatch(clearErrors());
     })
     .catch((err) => {
