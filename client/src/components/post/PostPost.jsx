@@ -39,7 +39,8 @@ class PostPost extends Component {
   state = {
     open: false,
     body: '',
-    errors: {}
+    errors: {},
+    image: null
   };
   componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
@@ -54,17 +55,33 @@ class PostPost extends Component {
   handleOpen = () => {
     this.setState({ open: true });
   };
+
   handleClose = () => {
     this.props.clearErrors();
     this.setState({ open: false, errors: {} });
   };
+
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
+  handleEditPicture = () => {
+    const fileInput = document.getElementById('imageInput');
+    fileInput.click();
+  };
+  handleImageChange = (event) => {
+    const image = event.target.files[0];
+    const formData = new FormData();
+    formData.append('image', image, image.name);
+    this.setState({ image: formData });
+    // this.props.uploadImage(formData);
+  };
+
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.postPost({ body: this.state.body });
+    this.props.postPost({ body: this.state.body, image: this.state.image });
   };
+
   render() {
     const { errors } = this.state;
     const {
@@ -105,6 +122,17 @@ class PostPost extends Component {
                 onChange={this.handleChange}
                 fullWidth
               />
+              <input
+                type="file"
+                id="imageInput"
+                hidden="hidden"
+                onChange={this.handleImageChange}
+              />
+              <MyButton
+                tip="Edit profile picture"
+                onClick={this.handleEditPicture}
+                btnClassName="button"
+              ></MyButton>
               <Button
                 type="submit"
                 variant="contained"
