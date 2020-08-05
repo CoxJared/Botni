@@ -14,7 +14,7 @@ const styles = (theme) => ({
     maxWidth: '100%',
     height: 100,
     objectFit: 'cover',
-    borderRadius: '50%'
+    borderRadius: '10%'
   },
   commentData: {
     marginLeft: 20
@@ -34,7 +34,7 @@ class Comments extends Component {
                 <Grid container>
                   <Grid item sm={2}>
                     <img
-                      stc={userImage}
+                      src={userImage}
                       alt="comment"
                       className={classes.commentImage}
                     />
