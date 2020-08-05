@@ -35,7 +35,8 @@ const styles = (theme) => ({
     cursor: 'pointer'
   },
   paper: {
-    padding: 20
+    padding: 20,
+    textAlign: 'left'
   },
   buttons: {
     marginTop: 15

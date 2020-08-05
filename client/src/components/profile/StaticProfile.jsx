@@ -15,7 +15,24 @@ import LinkIcon from '@material-ui/icons/Link';
 import CalendarToday from '@material-ui/icons/CalendarToday';
 
 const styles = (theme) => ({
-  ...theme.styleSpreading
+  ...theme.styleSpreading,
+  profileImage: {
+    width: '90%',
+    margin: 'auto',
+    borderRadius: '8%',
+    padding: '5%',
+    cursor: 'pointer'
+  },
+  paper: {
+    padding: 20,
+    textAlign: 'left'
+  },
+  buttons: {
+    marginTop: 15
+  },
+  button: {
+    marginRight: 10
+  }
 });
 
 const StaticProfile = (props) => {
@@ -28,7 +45,7 @@ const StaticProfile = (props) => {
     <Paper className={classes.paper}>
       <div className={classes.profile}>
         <div className="image-wrapper">
-          <img src={imageUrl} alt="profile" className="profile-image" />
+          <img src={imageUrl} alt="profile" className={classes.profileImage} />
         </div>
         <hr />
         <div className="profile-details">
@@ -36,7 +53,7 @@ const StaticProfile = (props) => {
             component={Link}
             to={`/users/${handle}`}
             color="primary"
-            cariant="h5"
+            variant="h5"
           >
             @{handle}
           </MuiLink>
