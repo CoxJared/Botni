@@ -77,7 +77,7 @@ class PostDialog extends Component {
   handleClose = () => {
     window.history.pushState(null, null, this.state.oldPath);
     this.setState({ open: false });
-    this.page.clearErrors();
+    this.props.clearErrors();
   };
 
   render() {
