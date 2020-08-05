@@ -5,11 +5,19 @@ import plantLibrary from '../../util/PlantLibrary';
 import { withStyles, mergeClasses } from '@material-ui/styles';
 import PropTypes from 'prop-types';
 
+//redux
+import { connect } from 'react-redux';
+
 const styles = (theme) => ({
   ...theme.styleSpread,
+  plantLibrary: {
+    display: 'flex',
+    flexWrap: 'wrap'
+  },
   plantIconContainer: {
     width: 100,
     height: 40,
+    margin: 5,
     display: 'flex',
     border: '2px solid red',
     borderRadius: '15px',
@@ -39,25 +47,38 @@ export class ProfilePlants extends Component {
 
   render() {
     const plant = 'tomato';
-    const { classes, user } = this.props;
-    let { color: plantBorderColor, image } = plantLibrary[plant];
+    const {
+      classes,
+      user: {
+        credentials: { plants }
+      }
+    } = this.props;
 
-    console.log(user.plants);
-    return (
-      <div className={classes.plantIconContainer}>
-        <img src={image} alt="plant" className={classes.plantIcon} />
-        <div className={classes.textContainer}>
-          <h3 className={classes.plantName}>Tomatos</h3>
-          <h3 className={classes.amount}>3 Trees</h3>
+    console.log(plants);
+
+    const plantIcons = plants.map((plant) => {
+      let { color: plantBorderColor, image } = plantLibrary[plant.name];
+      return (
+        <div className={classes.plantIconContainer}>
+          <img src={image} alt="plant" className={classes.plantIcon} />
+          <div className={classes.textContainer}>
+            <h3 className={classes.plantName}>{plant.name}</h3>
+            <h3 className={classes.amount}>{plant.amount}</h3>
+          </div>
         </div>
-      </div>
-    );
+      );
+    });
+
+    return <div className={classes.plantLibrary}>{plantIcons}</div>;
   }
 }
 
-ProfilePlants.protoTypes = {
+const mapStateToProps = (state) => ({
+  user: state.user
+});
+
+ProfilePlants.propTypes = {
   user: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired
 };
-
-export default withStyles(styles)(ProfilePlants);
+export default connect(mapStateToProps)(withStyles(styles)(ProfilePlants));
