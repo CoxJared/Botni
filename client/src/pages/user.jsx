@@ -26,7 +26,7 @@ class user extends Component {
 
     this.props.getUserData(handle);
     axios
-      .get(`/users/${handle}`)
+      .get(`/user/${handle}`)
       .then((response) => {
         this.setState({ profile: response.data.user });
       })
@@ -34,6 +34,7 @@ class user extends Component {
   }
 
   render() {
+    console.log('user');
     const { posts, loading } = this.props.data;
     const { postIdParam } = this.state;
 

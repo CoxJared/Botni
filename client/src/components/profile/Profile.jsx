@@ -17,13 +17,13 @@ import Paper from '@material-ui/core/Paper';
 import LocationOn from '@material-ui/icons/LocationOn';
 import LinkIcon from '@material-ui/icons/Link';
 import CalendarToday from '@material-ui/icons/CalendarToday';
-import EditIcon from '@material-ui/icons/Edit';
+// import EditIcon from '@material-ui/icons/Edit';
 import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
 
 //redux
 import { connect } from 'react-redux';
 import { logoutUser, uploadImage } from '../../redux/actions/userActions';
-import ProfilePlants from './ProfilePlants';
+// import ProfilePlants from './ProfilePlants';
 
 const styles = (theme) => ({
   ...theme.styleSpread,
