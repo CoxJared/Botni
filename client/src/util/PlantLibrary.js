@@ -5,8 +5,7 @@ import garlicIcon from '../images/plant-icons/garlic.png';
 import beetIcon from '../images/plant-icons/beet.png';
 import kaleIcon from '../images/plant-icons/kale.png';
 import orangeIcon from '../images/plant-icons/orange.png';
-import redPepperIcon from '../images/plant-icons/red-pepper.png'
-
+import redPepperIcon from '../images/plant-icons/red-pepper.png';
 
 export default {
   apple: {
@@ -21,7 +20,7 @@ export default {
     color: '#f00',
     image: tomatoIcon
   },
-  garlice: {
+  garlic: {
     color: '#f00',
     image: garlicIcon
   },
@@ -40,6 +39,5 @@ export default {
   pepper: {
     color: '#f00',
     image: redPepperIcon
-  },
-
+  }
 };

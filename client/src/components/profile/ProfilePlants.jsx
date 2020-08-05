@@ -52,7 +52,9 @@ const styles = (theme) => ({
     fontWeight: '300'
   },
   plantSearchIcons: {
-    height: 200
+    paddingTop: 10,
+    display: 'flex',
+    flexWrap: 'wrap'
   }
 });
 
@@ -86,6 +88,8 @@ export class ProfilePlants extends Component {
       openDialog: false
     });
   };
+
+  handleAddPlant = () => {};
 
   render() {
     const {
@@ -139,7 +143,7 @@ export class ProfilePlants extends Component {
               {this.state.plants.map((plant) => {
                 console.log(plant);
                 return (
-                  <div className={classes.plantIconContainer}>
+                  <div className={`${classes.plantIconContainer} cursorHover`}>
                     <img
                       src={plantLibrary[plant].image}
                       alt="plant"
@@ -156,9 +160,6 @@ export class ProfilePlants extends Component {
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
               Cancel
-            </Button>
-            <Button onClick={this.handleSubmit} color="primary">
-              Save
             </Button>
           </DialogActions>
         </Dialog>
