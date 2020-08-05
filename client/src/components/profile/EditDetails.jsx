@@ -88,7 +88,7 @@ class EditDetails extends Component {
           onClose={this.handleClose}
           fullWidthmaxWidth="sm"
         >
-          <DialogTitle>Edit yourt details</DialogTitle>
+          <DialogTitle>Edit your details</DialogTitle>
           <DialogContent>
             <form>
               <TextField
@@ -99,7 +99,7 @@ class EditDetails extends Component {
                 rows="3"
                 placeholder="A short bio about yourself"
                 className={classes.TextField}
-                calue={this.state.bio}
+                value={this.state.bio}
                 onChange={this.handlechange}
                 fullWidth
               />
@@ -126,7 +126,7 @@ class EditDetails extends Component {
             </form>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleclose} color="primary">
+            <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
             <Button onClick={this.handleSubmit} color="primary">
