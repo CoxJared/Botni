@@ -1,7 +1,4 @@
-const {
-  admin,
-  db
-} = require('../util/admin');
+const { admin, db } = require('../util/admin');
 
 const config = require('../util/config');
 
@@ -22,10 +19,7 @@ exports.signup = (request, response) => {
     handle: request.body.handle
   };
 
-  const {
-    errors,
-    valid
-  } = validateSignupData(newUser);
+  const { errors, valid } = validateSignupData(newUser);
 
   if (!valid) {
     return response.status(400).json(errors);
@@ -88,10 +82,7 @@ exports.login = (request, response) => {
     password: request.body.password
   };
 
-  const {
-    errors,
-    valid
-  } = validateLoginData(user);
+  const { errors, valid } = validateLoginData(user);
 
   if (!valid) {
     return response.status(400).json(errors);
@@ -123,14 +114,14 @@ exports.addUserDetails = (request, response) => {
     .then(() => {
       return response.json({
         message: 'Details added successfully'
-      })
+      });
     })
     .catch((err) => {
       console.error(err);
       return response.status(500).json({
         error: err.code
       });
-    })
+    });
 };
 
 //Get any users details
@@ -138,7 +129,7 @@ exports.getUserDetails = (request, response) => {
   let userData = {};
   db.doc(`/users/${request.params.handle}`)
     .get()
-    .then(doc => {
+    .then((doc) => {
       if (doc.exists) {
         userData.user = doc.data();
         return db
@@ -148,13 +139,13 @@ exports.getUserDetails = (request, response) => {
           .get();
       } else {
         return response.status(404).json({
-          error: "User not found"
+          error: 'User not found'
         });
       }
     })
-    .then(data => {
+    .then((data) => {
       userData.posts = [];
-      data.forEach(doc => {
+      data.forEach((doc) => {
         userData.posts.push({
           body: doc.data().body,
           createdAt: doc.data().createdAt,
@@ -164,17 +155,17 @@ exports.getUserDetails = (request, response) => {
           commentCount: doc.data().commentCount,
           postId: doc.id,
           plants: doc.data().plants
-        })
+        });
       });
       return response.json(userData);
     })
-    .catch(err => {
+    .catch((err) => {
       console.error(err);
       return response.status(500).json({
         error: err.code
       });
-    })
-}
+    });
+};
 
 //Get own user details
 exports.getAuthenticatedUser = (request, response) => {
@@ -184,13 +175,16 @@ exports.getAuthenticatedUser = (request, response) => {
     .then((doc) => {
       if (doc.exists) {
         userData.credentials = doc.data();
-        return db.collection('likes').where('userHandle', '==', request.user.handle).get();
+        return db
+          .collection('likes')
+          .where('userHandle', '==', request.user.handle)
+          .get();
       }
     })
     .then((data) => {
       userData.likes = [];
       data.forEach((doc) => {
-        userData.likes.push(doc.data())
+        userData.likes.push(doc.data());
       });
       return db
         .collection('notifications')
@@ -199,9 +193,9 @@ exports.getAuthenticatedUser = (request, response) => {
         .limit(10)
         .get();
     })
-    .then(data => {
+    .then((data) => {
       userData.notifications = [];
-      data.forEach(doc => {
+      data.forEach((doc) => {
         userData.notifications.push({
           recipient: doc.data().recipient,
           sender: doc.data().sender,
@@ -219,8 +213,8 @@ exports.getAuthenticatedUser = (request, response) => {
       return response.status(500).json({
         error: err.code
       });
-    })
-}
+    });
+};
 
 // upload profile image for user
 exports.uploadImage = (request, response) => {
@@ -242,9 +236,7 @@ exports.uploadImage = (request, response) => {
         error: 'Wrong filetype submitted'
       });
     }
-    const imageExtension = filename.split('.')[
-      filename.split('.').length - 1
-    ];
+    const imageExtension = filename.split('.')[filename.split('.').length - 1];
     imageFileName = `${Math.round(
       Math.random() * 10000000000
     )}.${imageExtension}`;
@@ -290,13 +282,12 @@ exports.uploadImage = (request, response) => {
 
 exports.markNotificationsRead = (request, response) => {
   let batch = db.batch();
-  request.body
-    .forEach(notificationId => {
-      const notification = db.doc(`/notifications/${notificationId}`);
-      batch.update(notification, {
-        read: true
-      });
+  request.body.forEach((notificationId) => {
+    const notification = db.doc(`/notifications/${notificationId}`);
+    batch.update(notification, {
+      read: true
     });
+  });
   batch
     .commit()
     .then(() => {
@@ -304,10 +295,12 @@ exports.markNotificationsRead = (request, response) => {
         message: 'Notifications Markes Read'
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.error(err);
       return response.status(500).json({
         error: err.code
       });
-    })
-}
+    });
+};
+
+exports.addPlantToUser = (request, response) => {};

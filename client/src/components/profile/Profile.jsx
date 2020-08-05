@@ -103,8 +103,8 @@ class Profile extends Component {
               >
                 @{handle}
               </MuiLink>
-              <hr />
-              <ProfilePlants />
+              {/* <hr />
+              <ProfilePlants /> */}
               <hr />
               {bio && (
                 <Typography variant="body2">
