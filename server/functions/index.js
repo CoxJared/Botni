@@ -35,7 +35,7 @@ const {
   getAllUserPlants,
   getUserPlants,
   addUserPlant
-}
+} = require('./handlers/userPlants');
 
 const { postOnePlant, getAllPlants } = require('./handlers/plants');
 

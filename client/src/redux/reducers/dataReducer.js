@@ -15,7 +15,7 @@ const initialState = {
   loading: false
 };
 
-export default function (state = initialState, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
     case LOADING_DATA:
       return {
@@ -26,7 +26,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         posts: action.payload,
-          loading: false
+        loading: false
       };
     case SET_POST:
       return {
@@ -46,9 +46,7 @@ export default function (state = initialState, action) {
         ...state
       };
     case DELETE_POST:
-      index = state.posts.findIndex(
-        (post) => post.postId === action.payload
-      );
+      index = state.posts.findIndex((post) => post.postId === action.payload);
       state.posts.splice(index, 1);
       return {
         ...state

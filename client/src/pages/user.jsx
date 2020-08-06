@@ -16,7 +16,9 @@ class user extends Component {
     profile: null,
     postIdParam: null
   };
+
   componentDidMount() {
+    console.log('start', this.props.data.posts);
     const handle = this.props.match.params.handle;
     const postId = this.props.match.params.postId;
 
@@ -29,12 +31,12 @@ class user extends Component {
       .get(`/user/${handle}`)
       .then((response) => {
         this.setState({ profile: response.data.user });
+        console.log('two', this.props.data.posts);
       })
       .catch((err) => console.log(err));
   }
 
   render() {
-    console.log('user');
     const { posts, loading } = this.props.data;
     const { postIdParam } = this.state;
 

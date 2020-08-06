@@ -154,7 +154,8 @@ exports.getUserDetails = (request, response) => {
           likeCount: doc.data().likeCount,
           commentCount: doc.data().commentCount,
           postId: doc.id,
-          plants: doc.data().plants
+          plants: doc.data().plants,
+          image: doc.data().image
         });
       });
       return response.json(userData);

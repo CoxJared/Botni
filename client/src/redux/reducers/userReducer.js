@@ -16,7 +16,7 @@ const initialState = {
   notifications: []
 };
 
-export default function (state = initialState, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
     case SET_AUTHENTICATED:
       return {
@@ -27,9 +27,10 @@ export default function (state = initialState, action) {
       return initialState;
     case SET_USER:
       return {
+        ...state,
         authenticated: true,
-          loading: false,
-          ...action.payload
+        loading: false,
+        ...action.payload
       };
     case LOADING_USER:
       return {

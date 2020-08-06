@@ -27,9 +27,9 @@ export const loginUser = (userData, history) => (dispatch) => {
       dispatch({
         type: SET_ERRORS,
         payload: err.response.data
-      })
+      });
     });
-}
+};
 
 export const signupUser = (newUserData, history) => (dispatch) => {
   dispatch({
@@ -37,7 +37,7 @@ export const signupUser = (newUserData, history) => (dispatch) => {
   });
   axios
     .post('/signup', newUserData)
-    .then(response => {
+    .then((response) => {
       setAuthorizationHeader(response.data.token);
       dispatch(getUserData());
       dispatch({
@@ -45,13 +45,13 @@ export const signupUser = (newUserData, history) => (dispatch) => {
       });
       history.push('/');
     })
-    .catch(err => {
+    .catch((err) => {
       dispatch({
         type: SET_ERRORS,
         payload: err.response.data
       });
     });
-}
+};
 
 export const logoutUser = () => (dispatch) => {
   localStorage.removeItem('FBIdToken');
@@ -60,22 +60,23 @@ export const logoutUser = () => (dispatch) => {
   dispatch({
     type: SET_UNAUTHENTICATED
   });
-}
+};
 
 export const getUserData = () => (dispatch) => {
   dispatch({
     type: LOADING_USER
   });
+  console.log('getting user data');
   axios
     .get('/user')
-    .then(response => {
+    .then((response) => {
       dispatch({
         type: SET_USER,
         payload: response.data
-      })
+      });
     })
-    .catch(err => console.log(err));
-}
+    .catch((err) => console.log(err));
+};
 
 export const uploadImage = (formData) => (dispatch) => {
   dispatch({
@@ -86,7 +87,7 @@ export const uploadImage = (formData) => (dispatch) => {
     .then(() => {
       dispatch(getUserData());
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
 export const editUserDetails = (userDetails) => (dispatch) => {
@@ -98,7 +99,7 @@ export const editUserDetails = (userDetails) => (dispatch) => {
     .then(() => {
       dispatch(getUserData());
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
 export const markNotificationsRead = (notificationIds) => (dispatch) => {
@@ -109,7 +110,7 @@ export const markNotificationsRead = (notificationIds) => (dispatch) => {
         type: MARK_NOTIFICATIONS_READ
       });
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
 const setAuthorizationHeader = (token) => {

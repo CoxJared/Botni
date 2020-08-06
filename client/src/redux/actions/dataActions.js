@@ -10,7 +10,7 @@ import {
   LOADING_UI,
   SET_POST,
   STOP_LOADING_UI,
-  SUBMIT_COMMENT,
+  SUBMIT_COMMENT
 } from '../types';
 import axios from 'axios';
 
@@ -21,13 +21,13 @@ export const getPosts = () => (dispatch) => {
   });
   axios
     .get('/posts')
-    .then(response => {
+    .then((response) => {
       dispatch({
         type: SET_POSTS,
         payload: response.data
       });
     })
-    .catch(err => {
+    .catch((err) => {
       dispatch({
         type: SET_POSTS,
         payload: []
@@ -39,8 +39,9 @@ export const getPost = (postId) => (dispatch) => {
   dispatch({
     type: LOADING_UI
   });
-  axios.get(`/post/${postId}`)
-    .then(response => {
+  axios
+    .get(`/post/${postId}`)
+    .then((response) => {
       dispatch({
         type: SET_POST,
         payload: response.data
@@ -50,9 +51,7 @@ export const getPost = (postId) => (dispatch) => {
         type: STOP_LOADING_UI
       });
     })
-    .catch((err) =>
-      console.log(err)
-    );
+    .catch((err) => console.log(err));
 };
 
 //post a post
@@ -74,7 +73,7 @@ export const postPost = (newPost, formData) => (dispatch) => {
           //   payload: response.data
           // });
           dispatch(getPosts());
-        })
+        });
     })
     .catch((err) => {
       dispatch({
@@ -92,7 +91,7 @@ export const likePost = (postId) => (dispatch) => {
       dispatch({
         type: LIKE_POST,
         payload: response.data
-      })
+      });
     })
     .catch((err) => console.log(err));
 };
@@ -121,7 +120,7 @@ export const submitComment = (postId, commentData) => (dispatch) => {
       });
       dispatch(clearErrors());
     })
-    .catch(err => {
+    .catch((err) => {
       dispatch({
         type: SET_ERRORS,
         payload: err.response.data
@@ -137,8 +136,10 @@ export const deletePost = (postId) => (dispatch) => {
         type: DELETE_POST,
         payload: postId
       });
+      dispatch(clearErrors());
+      // dispatch(getPosts());
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
 export const getUserData = (userHandle) => (dispatch) => {
