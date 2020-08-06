@@ -38,9 +38,9 @@ const styles = (theme) => ({
   },
   postImage: {
     backgroundColor: '#ddd',
-    width: 250,
+    minWidth: 250,
     height: 250,
-    padding: 10,
+    padding: 0,
     margin: '0 50px 0 50px'
   }
 });
@@ -80,12 +80,14 @@ class PostPost extends Component {
     const fileInput = document.getElementById('postimageInput');
     fileInput.click();
   };
+
   handlePostImageChange = (event) => {
     const image = event.target.files[0];
     const imageFormData = new FormData();
-    console.log(image);
+    const imageUrl = URL.createObjectURL(event.target.files[0]);
+
     imageFormData.append('image', image, image.name);
-    this.setState({ image, imageFormData });
+    this.setState({ image: imageUrl });
 
     // this.props.uploadImage(formData);
   };
