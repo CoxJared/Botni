@@ -5,7 +5,12 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import withStyles from '@material-ui/core/styles/withStyles';
 
+//tempory images, replace with database pics
 import tempGarden from './../../images/tempGardenPhotos/garden.jpeg';
+import tomatoIcon from './../../images/plant-icons/tomato.png';
+import orangeIcon from './../../images/plant-icons/orange.png';
+import kaleIcon from './../../images/plant-icons/kale.png';
+import { orange } from '@material-ui/core/colors';
 
 const styles = (theme) => ({
   ...theme.styleSpreading,
@@ -33,7 +38,7 @@ const styles = (theme) => ({
     margin: 0
   },
   day: {
-    backgroundColor: '#eee',
+    backgroundColor: 'rgb(250,250,250)',
     borderRadius: '15px',
     border: '2px solid rgba(0,0,1,1)',
     padding: 0,
@@ -79,15 +84,28 @@ export class Garden extends Component {
       { dayofWeek: 'Sat', dayOfMonth: '8', watered: false, fertilized: false }
     ];
 
+    const myPlants = [
+      { name: 'Tomato', image: tomatoIcon },
+      { name: 'Orange', image: orange },
+      { name: 'Kale', image: kaleIcon }
+    ];
+
     const weekElements = weekItems.map((day) => (
       <CardContent
         className={classes.day}
         style={{
-          borderColor: day.watered ? 'rgba(80,90,255,.8)' : 'rgba(0,0,0,0)'
+          borderColor: day.watered ? 'rgba(80,90,255,.8)' : 'rgba(0,0,0,.05)'
         }}
       >
         <h2 className={classes.dayOfWeek}>{day.dayofWeek}</h2>
         <h2 className={classes.dayOfMonth}>{day.dayOfMonth}</h2>
+      </CardContent>
+    ));
+
+    const myPlantElements = myPlants.map((plant) => (
+      <CardContent className={classes.plantSelector}>
+        <h2 className={classes.plantName}>{plant.name}</h2>
+        <img className={classes.plantImage} src={plant.image} />
       </CardContent>
     ));
 
