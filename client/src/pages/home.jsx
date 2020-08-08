@@ -8,6 +8,7 @@ import PostSkeleton from '../util/PostSkeleton';
 
 import { connect } from 'react-redux';
 import { getPosts } from '../redux/actions/dataActions';
+import Garden from '../components/garden/Garden';
 export class home extends Component {
   componentDidMount() {
     this.props.getPosts();
@@ -23,6 +24,7 @@ export class home extends Component {
     return (
       <Grid container spacing={2}>
         <Grid item sm={8} xs={12}>
+          <Garden />
           {recentPostsMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>

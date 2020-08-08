@@ -23,7 +23,7 @@ import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
 //redux
 import { connect } from 'react-redux';
 import { logoutUser, uploadImage } from '../../redux/actions/userActions';
-// import ProfilePlants from './ProfilePlants';
+import ProfilePlants from './ProfilePlants';
 
 const styles = (theme) => ({
   ...theme.styleSpread,
@@ -104,8 +104,8 @@ class Profile extends Component {
               >
                 @{handle}
               </MuiLink>
-              {/* <hr />
-              <ProfilePlants /> */}
+              <hr />
+              {/* <ProfilePlants /> */}
               <hr />
               {bio && (
                 <Typography variant="body2">
